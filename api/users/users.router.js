@@ -4,7 +4,6 @@ export default app => {
   const usersController = new UsersController()
   app
     .route('/users')
-    .all(app.auth.authenticate())
     .get((req, res) => {
       usersController
         .getAll()

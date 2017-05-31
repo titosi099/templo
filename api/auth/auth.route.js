@@ -13,7 +13,12 @@ export default app => {
         .then(user => {
           if (Users.forge().isPassword(user.toJSON().usu_senha, senha)) {
             const payload = {usu_codigo: user.toJSON().usu_codigo}
-            res.json({token: jwt.encode(payload, cfg.jwtSecret)})
+            res.json({
+              user: {
+                login: user.toJSON().usu_login
+              },
+              token: jwt.encode(payload, cfg.jwtSecret)
+            })
           } else {
             res.sendStatus(401)
           }

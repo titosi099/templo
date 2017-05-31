@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a class="fixo button is-large is-danger is-loading" v-show="loading">Loading</a>
+    <a class="fixo button is-large is-danger is-loading" v-show="isLoading">Loading</a>
     <div class="container">
       <h1 class="title">{{title}}</h1>
       <div class="columns">
@@ -10,17 +10,15 @@
             <a class="button is-info" @click="searchMembers">Search</a>
           </p>
         </div>
-        <div class="column is-5">
-
-        </div>
+        <!-- <div class="column is-5"><a class="fixo button is-info">Add</a></div> -->
       </div>
       <div class="columns">
         <div class="column is-12">
-          <table class="table is-narrow is-bordered">
+          <a class="fixo button is-info" href="#" @click.prevent="newMember()">Add</a>
+          <table class="table is-narrow is-striped">
             <thead>
               <th>Codigo</th>
               <th>Nome</th>
-              <th>Mais</th>
               <th>Ações</th>
               </tr>
             </thead>
@@ -28,14 +26,6 @@
               <tr v-for="member in members">
                 <td>{{member.mem_codigo}}</td>
                 <td>{{member.mem_nome}}</td>
-                <td class="is-icon">
-                  <a href="#">
-                    <i class="fa fa-map-marker"></i>
-                  </a>
-                  <a href="#" @click.prevent="newMember(member)">
-                    <i class="fa fa-plus-circle"></i>
-                  </a>
-                </td>
                 <td class="is-icon">
 
                   <a href="#" @click.prevent="editMember(member)">
@@ -48,7 +38,6 @@
               </tr>
             </tbody>
           </table>
-          <Pagination :total="total" :page="page" :itens-per-page="itensPerPage" @change-page="onChangePage"></Pagination>
         </div>
       </div>
     </div>
@@ -56,7 +45,7 @@
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Membros: {{selected.mem_nome}}</p>
+          <p class="modal-card-title">M: {{selected.mem_nome}}</p>
           <button class="delete" @click.prevent="showModal=false"></button>
         </header>
         <section class="modal-card-body">
@@ -68,7 +57,7 @@
                 <input class="input" type="text" placeholder="Text input" v-model="selected.mem_nome">
               </p>
             </div>
-            <div class="column">
+            <div class="column" v-show="selected.mem_codigo">
               <label class="label">Código</label>
               <p class="control">
                 <input class="input" type="text" placeholder="Código" v-model="selected.mem_codigo">
@@ -86,12 +75,11 @@
   </div>
 </template>
 <script>
-  import Pagination from './Pagination.vue'
   export default {
-    data() {
+    data () {
       return {
         isLoading: false,
-        title: 'Vue.js crud',
+        title: '',
         search: '',
         members: [],
         page: 1,
@@ -101,113 +89,91 @@
         showModal: false
       }
     },
-    components: {
-      Pagination
-    },
+    components: {},
     methods: {
-      onChangePage(page) {
+      onChangePage (page) {
         this.page = page
         this.loadMembers()
       },
-      showLoading() {
-        this.isLoading = true;
+      showLoading () {
+        this.isLoading = true
       },
-      hideLoading() {
-        this.isLoading = false;
+      hideLoading () {
+        this.isLoading = false
       },
-      loadMembers() {
-
-        let t = this
+      loadMembers () {
         this.showLoading()
 
-        let start = (this.page * this.itensPerPage) - this.itensPerPage
-        let end = this.page * this.itensPerPage
-
         this
-          .$http
-          .get(`http://localhost:3000/members`)//?offset=${start}&limit=${end}
+          .axios
+          .get(`http://localhost:3000/members`)
           .then(response => {
-            t.members = response.body
-            //t.total = response.headers['X-Total-Count']
-          },
-          error => {
-            console.log(error)
-          }).finally(function () {
-            t.hideLoading();
+            this.members = response.data
+            this.hideLoading()
           })
-
+          .catch(error => {
+            console.log(error)
+          })
       },
-      searchMembers() {
-
+      searchMembers () {
       },
-      newMember() {
+      newMember () {
         this.selected = {}
-        this.showModal = true;
+        this.showModal = true
       },
-      editMember(member) {
+      editMember (member) {
         this.selected = member
         this.showModal = true
       },
-      saveMember() {
-        if (this.selected.mem_codigo != null) {  //EDIT
-          this.$http.put(`http://localhost:3000/members/${this.selected.mem_codigo}`, this.selected)
-            .then(
-            response => {
+      saveMember () {
+        let codMember = this.selected.mem_codigo
+        if (codMember) {
+          this.axios.put(`http://localhost:3000/members/${codMember}`, this.selected)
+            .then(response => {
               this.selected = {}
               this.showModal = false
-            },
-            error => {
-              console.error(error)
-            }
-            )
-            .finally(() => {
               this.loadMembers()
-            }
-            )
-        }
-        else { //NEW
-          this.$http.post(`http://localhost:3000/members`, this.selected)
-            .then(
-            response => {
+            })
+            .catch(error => {
+              console.error(error)
+            })
+        } else {
+          this.axios.post(`http://localhost:3000/members`, this.selected)
+            .then(response => {
               this.selected = {}
               this.showModal = false
-            },
-            error => {
-              console.error(error)
-            }
-            )
-            .finally(() => {
               this.loadMembers()
-            }
-            )
+            })
+            .catch(error => {
+              console.error(error)
+            })
         }
       },
-      removeMember(member) {
-        let self = this
-        swal(
+      removeMember (member) {
+        window.swal(
           {
-            title: "Você tem certeza?",
-            text: `Deseja apagar "${member.mem_nome}"`,
-            type: "warning",
+            title: 'Você tem certeza?',
+            text: `Deseja apagar ${member.mem_nome}`,
+            type: 'warning',
             showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            cancelButtonText: "Cancelar",
-            confirmButtonText: "Sim, pode apagar!",
+            confirmButtonColor: '#DD6B55',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sim, pode apagar!',
             showLoaderOnConfirm: true,
             closeOnConfirm: false
-          }, 
+          },
           () => {
-            self.$http.delete(`http://localhost:3000/members/${member.mem_codigo}`)
+            this.axios.delete(`http://localhost:3000/members/${member.mem_codigo}`)
               .then(result => {
-                swal("Membro removido!")
-                self.loadMembers()
+                window.swal('Membro removido!')
+                this.loadMembers()
               })
           }
         )
       }
     },
-    created() {
-      this.loadMembers();
+    created () {
+      this.loadMembers()
     }
   }
 
@@ -216,8 +182,10 @@
 <style>
   .fixo {
     float: right;
+  },
+  .button {
     margin-right: 10px;
-    margin-top: 0px;
+    margin-top: 10px;
     z-index: 1000;
   }
 </style>
