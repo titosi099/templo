@@ -11,7 +11,7 @@ export default app => {
         .where({usu_login: login})
         .fetch()
         .then(user => {
-          if (Users.forge().isPassword(user.toJSON().usu_senha, senha)) {
+          if (Users.forge().isPassword(user.toJSON().usu_password, senha)) {
             const payload = {usu_codigo: user.toJSON().usu_codigo}
             res.json({
               user: {

@@ -5,69 +5,54 @@ const defaultResponse = (data, statusCode = 200) => ({
   statusCode
 })
 
-const errorResponse = (message, statusCode = 400) => defaultResponse({
+const errorResponse = (message, statusCode = 422) => defaultResponse({
   error: message
 }, statusCode)
 
-class MembersController {
-  constructor () {
-    this.Members = Members
-  }
-
-  getAll (paginaion) {
-    return this.Members
-      .query(qb => {
-        qb.select(['mem_codigo', 'mem_nome'])
-      })
-      .fetchAll()
-      .then(result => {
-        if (!result.toJSON().length) return defaultResponse({}, 204)
-        return defaultResponse(result.toJSON())
-      })
-      .catch(err => errorResponse(err.message, 422))
-  }
-
-  getById (idMember) {
-    return this.Members
-      .where({mem_codigo: idMember})
-      .fetch()
-      .then(result => {
-        if (!result) return defaultResponse({}, 204)
-        return defaultResponse(result.toJSON())
-      })
-      .catch(err => errorResponse(err.message, 422))
-  }
-
-  create (data) {
-    return this.Members
-      .forge()
-      .save(data, {method: 'insert'})
-      .then(result => defaultResponse(result.toJSON()))
-      .catch(err => errorResponse(err.message, 422))
-  }
-
-  update (data, idMember) {
-    return this.Members
-      .forge()
-      .where({mem_codigo: idMember})
-      .save(data, {method: 'update'})
-      .then(result => defaultResponse(result.toJSON()))
-      .catch(err => errorResponse(err.message, 422))
-  }
-
-  delete (idMember) {
-    return this.Members
-      .where({mem_codigo: idMember})
-      .destroy()
-      .then(result => defaultResponse(result.toJSON(), 204))
-      .catch(err => errorResponse(err.message, 422))
-  }
+module.exports = {
+  getAll,
+  getById,
+  create,
+  update,
+  remove
 }
 
-export default MembersController
-// fetchAll()
-//       .then(result => {
-//         if (!result.toJSON().length) return defaultResponse({}, 204)
-//         return defaultResponse(result.toJSON())
-//       })
-//       .catch(err => errorResponse(err.message, 422))
+function getAll (paginaion) {
+  return Members
+    .forge()
+    .getAll()
+    .then(result => defaultResponse(result))
+    .catch(err => errorResponse(err.message))
+}
+
+function getById (idMember) {
+  return Members
+    .forge()
+    .getById(idMember)
+    .then(result => defaultResponse(result))
+    .catch(err => errorResponse(err.message))
+}
+
+function create (data) {
+  return Members
+    .forge()
+    .create(data)
+    .then(result => defaultResponse(result))
+    .catch(err => errorResponse(err.message))
+}
+
+function update (data, idMember) {
+  return Members
+    .forge()
+    .update(idMember, data)
+    .then(result => defaultResponse(result))
+    .catch(err => errorResponse(err.message))
+}
+
+function remove (idMember) {
+  return Members
+    .forge()
+    .remove(idMember)
+    .then(result => defaultResponse(result))
+    .catch(err => errorResponse(err.message))
+}

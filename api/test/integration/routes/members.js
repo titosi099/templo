@@ -7,14 +7,20 @@ describe('Routes Members', () => {
   let token
   const jwtSecret = app.config.jwtSecret
   const userAuth = {
+    usu_nome: 'Ronaldo test',
     usu_login: 'auth@mail.com',
-    usu_senha: 'Rea123'
+    usu_password: 'Rea123',
+    cod_entidade: 1
   }
   const defaultMember = {
-    mem_nome: 'Ronaldo'
+    mem_nome: 'Ronaldo',
+    mem_dados: {},
+    cod_entidade: 1
   }
   const newMember = {
-    mem_nome: 'newMember'
+    mem_nome: 'newMember',
+    mem_dados: {},
+    cod_entidade: 1
   }
   const updateMember = {
     mem_nome: 'apdateMember'

@@ -1,0 +1,272 @@
+Sistema
+- Cadastro de Usuarios
+- Cadastro de Membros
+- Gerencie a Sede e Congregações
+- Dízimos e Ofertas
+- Gráficos e Relatórios
+
+1. RECEITAS
+	1.1. Ordinárias ou Regular
+
+		1.1.1. Dízimos
+		
+		1.1.2. ofertas e contribuições
+
+		1.1.3. Outras ofertas regulares
+
+		1.1.4. Contribuições das Congregações/Missões
+
+	1.2. Extraordinárias ou especiais
+
+		1.2.1. Ofertas destinadas para missões
+
+		1.2.2. Ofertas destinadas para ação social
+
+		1.2.3. Ofertas destinadas para beneficência
+
+		1.2.4. Outras ofertas destinadas
+
+	1.3. Outras receitas
+
+		1.3.1. Ressarcimento de despesas
+
+		1.3.2. Ofertas para construção
+
+		1.3.3. Encontros
+
+		1.3.4. Doações
+
+		1.3.5. Empréstimos
+
+	1.4. Bancos conta Movimento
+
+		1.4.1. Banco S/A – Conta corrente (saque)
+
+		1.4.2. Banco S/A – Poupança (saque)
+
+2. DESPESAS
+	2.1. Despesas com pessoal
+
+		2.1.1. Salários e Ordenados
+
+		2.1.2. 13º Salários
+
+		2.1.3. Férias
+
+		2.1.4. Assistência médica e social
+
+		2.1.5. FGTS
+
+		2.1.6. Indenizações e Aviso Prévio
+
+		2.1.7. Despesas com Sindicato
+
+		2.1.8. Vale-transporte
+
+		2.1.9. Salário-família
+
+		2.1.20. Pensão Alimentícia
+
+		2.1.21. INSS
+
+		2.1.22.  Prêmios e gratificações
+
+		2.1.23. Cestas básicas
+
+		2.1.24. Salário maternidade
+
+		2.1.25. Despesas com alimentação
+
+	2.2. Despesas Gerais
+
+		2.2.1. Energia Elétrica
+
+		2.2.2. Telefone
+
+		2.2.3. Água/Esgoto
+
+		2.2.4. Gás
+
+		2.2.5. Despesas postais e telegráficas
+
+		2.2.6. Reproduções
+
+		2.2.7. Material de expediente e impressos
+
+		2.2.8. Aluguéis
+
+		2.2.9. Seguros
+
+		2.2.10. Material de higiene e limpeza
+
+		2.2.11. Serviços prestados por terceiros
+
+		2.2.12. Assistência contábil
+
+		2.2.13. Despesas legais e judiciais
+
+		2.2.14. Livros, jornais e revistas
+
+		2.2.15. Internet
+
+		2.2.16. Decoração e ornamentação
+
+		2.2.17. Bens de valores irrelevantes
+
+		2.2.18. Material de uso e consumo
+
+		2.2.19. Despesas com transportes
+
+		2.2.20. Despesas com veículos
+
+	2.3. Manutenção e reparos
+
+		2.3.1. Conservação e manutenção
+
+		2.3.2. Ferramentas perecíveis
+
+		2.3.3. Consertos e reparos
+
+	2.4. Despesas Tributáveis
+
+		2.4.1. IPTU
+
+		2.4.2. Impostos e taxas diversas
+
+		2.4.3. IR retido na fonte
+
+		2.4.4. PIS s/folha de salários
+
+		2.4.5. IOF
+
+		2.4.6. IPVA
+
+	2.5. Despesas Administrativas
+
+		2.5.1. Renda eclesiástica
+
+		2.5.2. Prêmio eclesiástico
+
+		2.5.3. Descanso eclesiástico
+
+		2.5.4. Associação de classe
+
+		2.5.5. Viagens de representação da igreja
+
+		2.5.6. Despesas diversas
+
+		2.5.7. Despesas com ministério do culto
+
+		2.5.8. Despesas com ministérios
+
+		2.5.9. Acampamentos e retiros
+
+		2.5.10. Funerais
+
+		2.5.11. Festas
+
+		2.5.12. Assinatura e consultoria
+
+		2.5.13. Juros e multas
+
+		2.5.14. Material para Ceia do Senhor
+
+		2.5.15. Despesas destinadas
+
+		2.5.16. Plano cooperativo
+
+		2.5.17. Evangelismo – folhetos, literaturas e ofertas
+
+		2.5.18. Pontos de pregação, convenção, missões
+
+		2.5.19. Despesas diversas com evangelismo e missões
+
+		2.5.20. Despesas c/conferencistas/pregadores/cantores
+
+		2.5.21. Contribuição para asilos e orfanatos
+
+		2.5.22. Despesas com ação social e beneficência
+
+		2.5.23. Multiministério (ajuda para comunidade)
+
+		2.5.24. Causas presbiteriais
+
+		2.5.25. Assistência funeral
+
+		2.5.26. Despesas com estagiários e seminaristas
+
+		2.5.27. Despesas com educação religiosa
+
+		2.5.28. Despesas com departamento/ministério de música
+
+		2.5.29. Despesas com ministério de música – ministro/regente
+
+		2.5.30. Outras despesas
+
+		2.5.31. Literatura evangélica
+
+		2.5.32. Escola bíblica – EBD/EBF
+
+		2.5.33. Despesas com congregações
+
+		2.5.34. Ressarcimento de receita
+
+		2.5.35. Empréstimos
+
+		2.5.40. Cursos diversos
+
+		2.5.41. Cursos e treinamento
+
+		2.5.42. Cursos para reciclagem ministerial
+
+		2.5.43. Cursos teológicos
+
+		2.5.44. Cursos de música
+
+		2.5.50. Despesas financeiras
+
+		2.5.51. Despesas bancárias
+
+		2.5.52. Juros e multas
+
+		2.5.53. Juros passivos
+
+		2.5.60. Bancos conta Movimento
+
+		2.5.61. Banco S/A – conta corrente (depósitos)
+
+		2.5.62. Banco S/A – conta poupança (depósitos)
+
+3. PATRIMÔNIO
+	
+	3.1. Bens patrimoniais
+
+		3.1.1. Terrenos
+
+		3.1.2. Imóveis
+
+		3.1.3. Móveis e utensílios
+
+		3.1.4. Computadores e periféricos
+
+		3.1.5. Veículos
+
+		3.1.6. Consórcios de veículos
+
+		3.1.7. Móveis e utensílios, equipamentos e instrumentos musicais
+
+		3.1.8. Máquinas, equipamentos e instalações
+
+		3.1.9. Biblioteca
+
+		3.1.10. Construções em andamento
+
+		3.1.11. Benfeitorias em propriedade de terceiros
+
+		3.1.12. Equipamentos de sonorização
+
+		3.1.13. Equipamentos esportivos
+
+		3.1.14. Tapetes
+
+		3.1.15. Instrumentos musicais

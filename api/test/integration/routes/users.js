@@ -6,37 +6,43 @@ describe('Routes Users', () => {
   let token
   const jwtSecret = app.config.jwtSecret
   const userAuth = {
+    usu_nome: 'Test',
     usu_login: 'auth@mail.com',
-    usu_senha: 'Rea123'
+    usu_password: 'Rea123',
+    cod_entidade: 1
   }
   const defaultUser = {
+    usu_nome: 'Test default',
     usu_login: 'test@mail.com',
-    usu_senha: '123'
+    usu_password: '123',
+    cod_entidade: 1
   }
   const newUser = {
+    usu_nome: 'Test New',
     usu_login: 'newUser@mail.com',
-    usu_senha: '12345'
+    usu_password: '12345',
+    cod_entidade: 1
   }
   const userUpdate = {
     usu_login: 'upUser@mail.com',
-    usu_senha: 'rea123'
+    usu_password: 'rea123'
   }
 
   beforeEach(done => {
     Users
-      .where('usu_codigo', '!=', '0')
+      .where('usu_codigo', '!=', '1')
       .destroy()
       .then(() => {
         Users
           .forge()
-          .save(userAuth, {method: 'insert'})
-          .then((user) => {
-            token = jwt.encode({usu_codigo: user.toJSON().usu_codigo}, jwtSecret)
+          .create(userAuth)
+          .then(user => {
+            token = jwt.encode({usu_codigo: user.usu_codigo}, jwtSecret)
             Users
               .forge()
-              .save(defaultUser, {method: 'insert'})
-              .then((userDefault) => {
-                usuCodigo = userDefault.toJSON().usu_codigo
+              .create(defaultUser)
+              .then(userDefault => {
+                usuCodigo = userDefault.usu_codigo
                 done()
               })
           })
@@ -49,7 +55,7 @@ describe('Routes Users', () => {
         .get('/users')
         .set('Authorization', `JWT ${token}`)
         .end((err, res) => {
-          expect(res.body[1].usu_login).to.be.eql(defaultUser.usu_login)
+          expect(res.body[2].usu_login).to.be.eql(defaultUser.usu_login)
           done(err)
         })
     })
