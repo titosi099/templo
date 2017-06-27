@@ -1,8 +1,11 @@
+dozu@lilylee.com
+
 Sistema
 - Cadastro de Usuarios
 - Cadastro de Membros
 - Gerencie a Sede e Congregações
 - Dízimos e Ofertas
+- Centro de custos
 - Gráficos e Relatórios
 
 1. RECEITAS
